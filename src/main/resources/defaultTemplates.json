@@ -1,4 +1,4 @@
 {
-	"leave-from-work-to-home-by-bike": "?da <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/DepartAction> . ?da <https://schema.org/fromLocation> ?location . ?da <https://schema.org/startTime> ?startDateTime . ?da <https://schema.org/agent> ?agent . ?da <https://schema.org/instrument> ?vehicle .",
+	"depart-from-work-to-home-by-bike": "?da <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/DepartAction> . ?da <https://schema.org/fromLocation> ?location . ?da <https://schema.org/startTime> ?startDateTime . ?da <https://schema.org/agent> ?agent . ?da <https://schema.org/instrument> ?vehicle .",
 	"arrive-from-work-to-home-by-bike": "?aa <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/ArriveAction> . ?aa <https://schema.org/fromLocation> ?location . ?aa <https://schema.org/startTime> ?startDateTime . ?aa <https://schema.org/agent> ?agent . ?aa <https://schema.org/instrument> ?vehicle ."
 }

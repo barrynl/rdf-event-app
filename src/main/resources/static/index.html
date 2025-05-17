@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css"
+	href="https://unpkg.com/vuetify@3.8.5/dist/vuetify.min.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+	rel="stylesheet">
+</head>
+<script type="importmap">
+  {
+    "imports": {
+    	"vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js",
+		"vuetify": "https://unpkg.com/vuetify@3.8.5/dist/vuetify.esm.js"
+    }
+  }
+</script>
+
+<div id="app"></div>
+
+<script type="module">
+  import { createApp } from 'vue'
+  import { createVuetify } from 'vuetify'
+
+  const vuetify = createVuetify()
+  createApp({
+	template:  `
+    <v-app>
+	  <v-layout>
+      <v-app-bar :elevation="3" color="primary" density="compact">
+		<template v-slot:prepend>
+			<v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+		</template>
+		<v-app-bar-title>RDF Event App</v-app-bar-title>
+	  </v-app-bar>
+
+	  <v-navigation-drawer
+        v-model="drawer"
+        :location="$vuetify.display.mobile ? 'bottom' : undefined"
+        temporary
+      >
+        <v-list
+          :items="items"
+        ></v-list>
+      </v-navigation-drawer>
+
+
+	  <v-main>
+		<v-container fluid>
+			<v-row dense>
+				<v-alert :text="message" title="" type="success" :elevation="1" closable></v-alert>
+			</v-row>
+			<v-row>
+			<v-col cols="6">
+				<v-sheet class="bg-grey-lighten-4"
+					rounded
+					:elevation="1"
+              	><v-btn size="x-large" block :style="getColorStyle()">Depart</v-btn></v-sheet>
+			</v-col>
+			<v-col cols="6">
+				<v-sheet class="bg-grey-lighten-4"
+					rounded
+					:elevation="1"
+              	><v-btn size="x-large" block :style="getColorStyle()">Arrive</v-btn></v-sheet>
+			</v-col>
+			<v-col
+              v-for="n in 8"
+              :key="n"
+              cols="6"
+            >
+				<v-sheet class="bg-grey-lighten-4"
+					rounded
+					:elevation="1"
+              	><v-btn size="x-large" block :style="getColorStyle()">Test</v-btn></v-sheet>
+            </v-col>
+			</v-row>
+		</v-container>
+	  </v-main>
+      </v-layout>
+    </v-app>
+      `,
+	methods: {
+		randomColor() {
+      		const r = () => Math.floor(256 * Math.random());
+      		return `rgb(${r()}, ${r()}, ${r()})`;
+    	},
+        getColorStyle() {
+			var bgColor = this.randomColor();
+			var fgColor = this.invertRgbColor(bgColor);
+			return {backgroundColor: bgColor, color: fgColor};
+		},
+		invertRgbColor(rgbString) {
+  			// Extract the red, green, and blue values from the rgb string
+  			const match = rgbString.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  			if (!match) {
+    			return null; // Invalid RGB string format
+  			}
+  			let r = parseInt(match[1], 10);
+  			let g = parseInt(match[2], 10);
+  			let b = parseInt(match[3], 10);
+
+  			// Invert each color component
+  			r = 255 - r;
+  			g = 255 - g;
+  			b = 255 - b;
+
+			// Return the inverted color as an rgb string
+  			return `rgb(${r}, ${g}, ${b})`;
+		}
+    },
+	
+    data() {
+      return {
+        message: 'Hello Barry! Welcome in the RDF Event App. Choose the event that just happened in your life.',
+		items: [
+		    {
+		      title: 'Events',
+      		  value: 'foo',
+		    },
+		    {
+		      title: 'Credits',
+		      value: 'credits',
+		    },
+		    {
+		      title: 'Settings',
+		      value: 'settings',
+		    },
+		],
+		drawer: false
+      }
+    }
+  }).use(vuetify).mount('#app')
+
+</script>
+</html>
