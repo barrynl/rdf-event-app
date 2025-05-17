@@ -1,0 +1,19 @@
+meta {
+  name: send triples
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseurl}}/event/leave-from-work-to-home-by-bike
+  body: text
+  auth: inherit
+}
+
+body:text {
+  <https://ld.barry.nl/da/1> a <https://schema.org/DepartAction> ;
+    <https://schema.org/fromLocation>  <https://ld.barry.nl/loc/work1> ;
+    <https://schema.org/startTime>  "2025-05-17T14:15:35.000+01:00" ;
+    <https://schema.org/agent>  <https://ld.barry.nl/me> ;
+    <https://schema.org/instrument>  <https://openenergyplatform.org/ontology/oeo/OEO_00010279/> .
+}
