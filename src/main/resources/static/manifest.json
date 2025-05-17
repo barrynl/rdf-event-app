@@ -1,0 +1,17 @@
+{
+	"name": "Barry NL",
+	"short_name": "Barry",
+	"theme_color": "#ffcbe4",
+	"background_color": "#fa99ca",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "http://127.0.0.1:8080/",
+	"description": "RDF Event App",
+	"orientation": "any",
+	"icons": [
+		{
+			"src": "https://christine.website/static/img/avatar.png",
+			"sizes": "1024x1024"
+		}
+	]
+}

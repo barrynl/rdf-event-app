@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css"
-	href="https://unpkg.com/vuetify@3.8.5/dist/vuetify.min.css">
-<link
-	href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+<link rel="stylesheet" type="text/css" href="/vuetify.min.css">
+<link href="/materialdesignicons.min.css" type="text/css"
 	rel="stylesheet">
+<link rel="manifest" href="/manifest.json">
 </head>
-<script type="importmap">
+<body>
+	<script type="importmap">
   {
     "imports": {
-    	"vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js",
-		"vuetify": "https://unpkg.com/vuetify@3.8.5/dist/vuetify.esm.js"
+    	"vue": "./vue.esm-browser.js",
+		"vuetify": "./vuetify.esm.js"
     }
   }
 </script>
 
-<div id="app"></div>
+	<div id="app"></div>
 
-<script type="module">
+	<script type="module">
   import { createApp } from 'vue'
   import { createVuetify } from 'vuetify'
 
@@ -131,5 +131,14 @@
     }
   }).use(vuetify).mount('#app')
 
+ if (!navigator && !navigator.serviceWorker && !navigator.serviceWorker.controller) {
+     navigator.serviceWorker.register("./sw.js").then(function(reg) {
+         console.log("Service worker has been registered for scope: " + reg.scope);
+     });
+ }
 </script>
+
+
+
+</body>
 </html>

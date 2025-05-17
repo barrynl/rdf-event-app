@@ -25,12 +25,16 @@ public class Server {
 		Path f = Files.createTempDirectory("tomcat");
 		tomcat.setBaseDir(f.toFile().getAbsolutePath());
 		tomcat.setPort(8080);
-//		tomcat.setHostname("0.0.0.0");
+		tomcat.setHostname("0.0.0.0");
 		tomcat.getConnector();
 
+		
+		
 		// root context
 		Context ctx = tomcat.addContext("", new File("src/main/resources/static").getAbsolutePath());
 
+		Tomcat.addDefaultMimeTypeMappings(ctx);
+		
 		// add default servlet for static html and js files
 		tomcat.addServlet("", "default", new DefaultServlet());
 		ctx.addServletMappingDecoded("/", "default");
