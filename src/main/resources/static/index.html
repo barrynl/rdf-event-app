@@ -63,10 +63,14 @@
 					:elevation="1"
               	><v-btn size="x-large" block :style="getColorStyle()">Arrive</v-btn></v-sheet>
 			</v-col>
+
+			<v-responsive width="100%"></v-responsive>
+
 			<v-col
               v-for="n in 8"
               :key="n"
               cols="6"
+			  xs="2"
             >
 				<v-sheet class="bg-grey-lighten-4"
 					rounded
@@ -131,11 +135,29 @@
     }
   }).use(vuetify).mount('#app')
 
- if (!navigator && !navigator.serviceWorker && !navigator.serviceWorker.controller) {
-     navigator.serviceWorker.register("./sw.js").then(function(reg) {
-         console.log("Service worker has been registered for scope: " + reg.scope);
-     });
- }
+const registerServiceWorker = async () => {
+  if ("serviceWorker" in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register("/sw.js", {
+        scope: "/",
+      });
+      if (registration.installing) {
+        console.log("Service worker installing");
+      } else if (registration.waiting) {
+        console.log("Service worker installed");
+      } else if (registration.active) {
+        console.log("Service worker active");
+      }
+    } catch (error) {
+      console.error(`Registration failed with ${error}`);
+    }
+  }
+};
+
+// …
+
+registerServiceWorker();
+
 </script>
 
 

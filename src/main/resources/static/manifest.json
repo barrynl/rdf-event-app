@@ -1,12 +1,12 @@
 {
 	"name": "RDF Event",
 	"short_name": "Event",
-	"theme_color": "#ffcbe4",
-	"background_color": "#fa99ca",
+	"theme_color": "#1867C0",
+	"background_color": "#1867C0",
 	"display": "standalone",
 	"scope": "/",
-	"start_url": "http://82.168.104.186/",
-	"description": "An app to register events that happen in our daily life.",
+	"start_url": "http://localhost:8080/",
+	"description": "An app to register events that happen in Barry's daily life.",
 	"orientation": "any",
 	"icons": [
 		    {
